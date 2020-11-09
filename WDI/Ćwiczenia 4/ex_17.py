@@ -13,22 +13,47 @@ def prime(num):
     return True
 
 
-def prog(tab1, tab2):
-    n_sum = 0
-    n_csum = 0
-    mode = [0,1,2]
-    sum = 0
-    for a in range(N):
-        for m in mode:
-            if m == 1:
-                sum += tab1[a]
-                n_sum += 1
-                if prime(sum):
-                print(sum)
-                n_csum += 1
+def sumki(tab1, tab2):
+    sumy_prime = 0
+
+    mieszanka = []
+    for i in range(3**N):
+        mieszanka.append([])
+        for _ in range(N):
+            mieszanka[i].append(0)
+
+    sumy = [0]*(3**N)
+
+    jump_count = 0
+    for j in range(N):
+        i = 0
+        mode = 1
+        while i < 3 ** N:
+            jump = 3 ** jump_count
+            for _ in range(jump):
+                if mode == 1:
+                    mieszanka[i][j] = tab1[j]
+                elif mode == 2:
+                    mieszanka[i][j] = tab2[j]
+                else:
+                    mieszanka[i][j] = (tab1[j] + tab2[j])
+                i += 1
+            mode += 1
+            if mode > 3:
+                mode = 1
+        jump_count += 1
+
+    for i in range(3**N):
+        for j in range(N):
+            sumy[i] += mieszanka[i][j]
+        if prime(sumy[i]):
+            print(sumy[i])
+            sumy_prime += 1
+
+    return 3**N, sumy_prime
 
 
 t1 = [1,3,2,4]
 t2 = [9,7,4,8]
 N = len(t1)
-prog(t1,t2)
+print(sumki(t1,t2))
