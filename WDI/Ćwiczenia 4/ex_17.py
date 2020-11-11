@@ -5,7 +5,7 @@ def prime(num):
     if num == 2 or num == 3: return True
     elif num < 2 or num%2 == 0 or num%3 == 0: return False
     i = 5
-    while i < sqrt(num):
+    while i <= sqrt(num):
         if num%i == 0: return False
         i += 2
         if num%i == 0: return False
@@ -49,6 +49,8 @@ def sumki(tab1, tab2):
         if prime(sumy[i]):
             print(sumy[i])
             sumy_prime += 1
+
+    #print(mieszanka)
 
     return 3**N, sumy_prime
 
