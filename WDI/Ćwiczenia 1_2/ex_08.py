@@ -13,4 +13,4 @@ def prime(a):
 
     return True
 
-print(prime(121))
+print(prime(25))
