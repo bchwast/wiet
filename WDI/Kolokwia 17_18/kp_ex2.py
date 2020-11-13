@@ -36,6 +36,7 @@ def pary(t1, t2):
             return N - wyc
     #end for
     return 0
+#end def
 
 
 t1 = [1,2,3,4]
