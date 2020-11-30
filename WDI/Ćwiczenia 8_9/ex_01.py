@@ -24,7 +24,6 @@ def wykreslanie(num, i=0):
     #end if
     if num >= 100:
         j = i
-        d_num = num
         while num > 10**j:
             c_num = num
             num = num%(10**j) + (num//(10**(j+1)))*(10**j)
@@ -36,4 +35,17 @@ def wykreslanie(num, i=0):
 #end def
 
 
-wykreslanie(2137)
+wykreslanie(1234)
+
+
+def garek(l, x=0, p=0, f=False):
+    if l == 0:
+        if x >= 10 and f and prime(x):
+            print(x)
+    else:
+        garek(l//10, (10**p)*(l%10)+x, p+1,f)
+        garek(l//10, x, p, True)
+#end def
+
+
+garek(1234)

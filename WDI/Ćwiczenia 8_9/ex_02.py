@@ -17,22 +17,16 @@ def waga(n):
 
 
 def rownewagi(T):
-    def dzielenie(t, n, i=-1, m=0, s_1=0, s_2=0, s_3=0):
-        #end if
-        if m == 1:
-            s_1 += t[i]
-        if m == 2:
-            s_2 += t[i]
-        if m == 3:
-            s_3 += t[i]
-        #end if
-        if i < n - 1:
-            if dzielenie(t, n, i+1, 1, s_1, s_2, s_3): return True
-            if dzielenie(t, n, i+1, 2, s_1, s_2, s_3): return True
-            if dzielenie(t, n, i+1, 3, s_1, s_2, s_3): return True
-        else:
+    def dzielenie(t, i=0, s_1=0, s_2=0, s_3=0):
+        if i == len(t):
             if s_1 == s_2 == s_3:
                 return True
+        else:
+            val = t[i]
+            return dzielenie(t, i+1, s_1 + val, s_2, s_3) or\
+                    dzielenie(t, i+1, s_1, s_2 + val, s_3) or\
+                    dzielenie(t, i+1, s_1, s_2, s_3 + val)
+        return False
     #end def
 
     N = len(T)
