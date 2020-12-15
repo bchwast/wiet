@@ -1,9 +1,9 @@
-def podzialy(liczba, p=1, s=""):
+def podzialy(liczba, s=[], last=1):
     if liczba == 0:
         print(s)
     else:
-        for i in range(p, liczba+1):
-            podzialy(liczba-i, i, s+","+str(i))
+        for i in range(last, liczba+1):
+            podzialy(liczba-i, s+[i], i)
 #end def
 
 
