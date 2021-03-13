@@ -1,3 +1,6 @@
+import timeit
+from random import randint
+
 class Node:
     def __init__(self):
         self.value = None
@@ -92,15 +95,15 @@ def qsort(L):
 
     l = getTail(L)
     L, _ = quicksort(L, l)
-    return
+    return L
 
 
 
-#T = [324, 76, 567, 3, 64, 6, 2, 324, 2, 45, 512, 5, 6345, 57, 35]
-T = [-20, 456,7,457, 75,4, 6, -235,-435,436,235,66,4,357,623,6,-56789,6,7,346,34,36,36,436,36, 10, 2, 4, 0, 2, 5, -1, 4, -2, -5, 3]
+T = [randint(-1000,1000) for _ in range(100000)]
 L = tab2list(T)
-printList(L)
-l = getTail(L)
-printList(l)
-qsort(L)
-printList(L)
+
+
+start = timeit.default_timer()
+L = qsort(L)
+stop = timeit.default_timer()
+print(stop - start)
