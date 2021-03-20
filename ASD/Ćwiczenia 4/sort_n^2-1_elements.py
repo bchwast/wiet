@@ -20,12 +20,12 @@ def sortn2_1(T):
     result = [0] * n
 
     for i in range(n):
-        occurences[T[i] // n] += 1
+        occurences[temp[i] // n] += 1
     for i in range(1, n):
         occurences[i] += occurences[i - 1]
     for i in range(n - 1, -1, -1):
-        occurences[T[i] // n] -= 1
-        result[occurences[T[i] // n]] = T[i]
+        occurences[temp[i] // n] -= 1
+        result[occurences[temp[i] // n]] = temp[i]
 
     for i in range(n):
         T[i] = result[i]

@@ -23,5 +23,6 @@ def quickselect(T, a, b, k):
 
 T = [3, 4, 6, 23, 7, 324, 25, 7,23 ,346, 3,46, 436,3, 2, 57654, 43,34]
 print(T)
-print(quickselect(T, 0, len(T) - 1, 14))
-print(T)
+for i in range(len(T)):
+    print(quickselect(T, 0, len(T) - 1, i))
+print(sorted(T))
