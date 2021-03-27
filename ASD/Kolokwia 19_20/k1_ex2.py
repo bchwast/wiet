@@ -12,16 +12,16 @@ def partition(T, low, high, pivotInd):
     return i + 1
 
 
-def quickselect(T, low, high, wanted):
+def make_parts(T, low, high, wanted):
     if low == high:
-        return T[low]
+        return
     mid = partition(T, low, high, high)
     if mid == wanted:
-        return T[mid]
+        return
     elif wanted < mid:
-        return quickselect(T, low, mid - 1, wanted)
+        return make_parts(T, low, mid - 1, wanted)
     else:
-        return quickselect(T, mid + 1, high, wanted)
+        return make_parts(T, mid + 1, high, wanted)
 
 
 def quicksort(T, low, high):
@@ -37,8 +37,8 @@ def quicksort(T, low, high):
 
 def section(T, p, q):
     result = [0] * (q - p + 1)
-    quickselect(T, 0, len(T) - 1, p)
-    quickselect(T, p, len(T) - 1, q)
+    make_parts(T, 0, len(T) - 1, p)
+    make_parts(T, p, len(T) - 1, q)
     quicksort(T, p, q)
     ind = 0
     for i in range(p, q + 1):

@@ -1,10 +1,13 @@
 def wczytywanie():
-    l = int(input("l: "))
-    m = int(input("m: "))
-    return (l, m)
+    u = tuple(input("> ").split("/"))
+    return u
 
 
 def wypisywanie(u):
+    if u[0] == 0:
+        return 0
+    if u[1] == 1:
+        return f"{u[0]}"
     return f"{u[0]}/{u[1]}"
 
 
@@ -23,19 +26,20 @@ def wspm(u1, u2):
 def suma(u1, u2):
     u1, u2 = wspm(u1, u2)
     u = (u1[0] + u2[0], u1[1])
-    return u
+    return skracanie(u)
 
 
 def roznica(u1, u2):
     u1, u2 = wspm(u1, u2)
     u = (u1[0] - u2[0], u1[1])
-    return u
+    return skracanie(u)
 
 
 def iloczyn(u1, u2):
     l = u1[0] * u2[0]
     m = u1[1] * u2[1]
-    return (l,m)
+    u = (l,m)
+    return skracanie(u)
 
 
 def iloraz(u1,u2):
@@ -44,13 +48,15 @@ def iloraz(u1,u2):
     if m < 0:
         l *= -1
         m *= -1
-    return (l, m)
+    u = (l,m)
+    return skracanie(u)
 
 
 def potega(u, p):
     l = u[0]**p
     m = u[0]**p
-    return (l,m)
+    u = (l,m)
+    return u
 
 
 def skracanie(u):
