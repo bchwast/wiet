@@ -1,5 +1,5 @@
 import timeit
-from random import randint
+from random import randint, shuffle
 
 
 def partition(T, a, b, pivotInd):
@@ -13,6 +13,7 @@ def partition(T, a, b, pivotInd):
     T[i + 1], T[b] = T[b], T[i + 1]
     return i + 1
 
+
 def ceiling(num):
     copy = int(num // 1)
     if copy == num:
@@ -23,10 +24,12 @@ def ceiling(num):
 
 def get_median(T, a, b):
     for i in range(a + 1, b + 1):
-        j = i
-        while j > a and T[j - 1] > T[j]:
-            T[j - 1], T[j] = T[j], T[j - 1]
+        el = T[i]
+        j = i - 1
+        while j >= a and T[j] > el:
+            T[j + 1] = T[j]
             j -= 1
+        T[j + 1] = el
     return (a + b) // 2
 
 
@@ -62,9 +65,10 @@ def linear_select(T, k):
 
 
 n = 1000000
-T = [i for i in range(n - 1, -1, -1)]
+T = [i for i in range(n)]
+shuffle(T)
 start = timeit.default_timer()
-print(linear_select(T, 52400))
+print(linear_select(T, len(T) // 2))
 stop = timeit.default_timer()
 print(stop - start)
-print(sorted(T)[52400])
+print(sorted(T)[len(T) // 2])

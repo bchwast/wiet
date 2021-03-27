@@ -1,5 +1,10 @@
+from random import randint
+
+
 def partition(T, a, b):
-    pivot = T[b]
+    pivotInd = randint(a, b)
+    pivot = T[pivotInd]
+    T[b], T[pivotInd] = T[pivotInd], T[b]
     i = a - 1
     for j in range(a, b):
         if T[j] <= pivot:

@@ -13,7 +13,6 @@ def bucketsort(T):
     bucketTab = [[] for _ in range(len(T))]
     bucketRange = (maxEl - minEl) / len(T)
     for i in range(len(T)):
-        print(T[i])
         bucketTab[min(int((T[i] - minEl) / bucketRange), len(T) - 1)].append(T[i])
 
     for i in range(len(T)):

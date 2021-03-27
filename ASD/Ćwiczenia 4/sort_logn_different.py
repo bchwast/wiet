@@ -6,9 +6,7 @@ def binary_search(T, el, a, b):
         return None
     c = (a + b) // 2
     if T[c][0] == el:
-        key = binary_search(T, el, a, c - 1)
-        if key == None:
-            return c
+        return c
     elif T[c][0] > el:
         return binary_search(T, el, a, c - 1)
     else:

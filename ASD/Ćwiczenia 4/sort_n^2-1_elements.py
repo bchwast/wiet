@@ -31,11 +31,11 @@ def sortn2_1(T):
         T[i] = result[i]
 
 
-n = 1000000
+n = 10
 T = [randint(0, n*n - 1) for _ in range(n)]
-#print(T)
+print(T)
 start = timeit.default_timer()
 sortn2_1(T)
 stop = timeit.default_timer()
-#print(T)
+print(T)
 print(stop - start)

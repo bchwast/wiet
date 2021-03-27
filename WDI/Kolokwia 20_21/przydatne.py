@@ -119,5 +119,48 @@ def zamiana_podstaw_tab(liczba, podstawa):
 #end def
 
 
-print(zamiana_podstaw_tab(15, 16))
+def bubble_sort_ros(tab):
+    sortowac = True
+    N = len(tab)
+    while sortowac:
+        sortowac = False
+        for i in range(N-1):
+            if tab[i+1] < tab[i]:
+                sortowac = True
+                temp = tab[i]
+                tab[i] = tab[i+1]
+                tab[i+1] = temp
+            #end if
+        #end for
+    #end while
+#end def
+
+
+def bubble_sort_mal(tab):
+    sortowac = True
+    N = len(tab)
+    while sortowac:
+        sortowac = False
+        for i in range(N-1):
+            if tab[i+1] > tab[i]:
+                sortowac = True
+                temp = tab[i]
+                tab[i] = tab[i+1]
+                tab[i+1] = temp
+            #end if
+        #end for
+    #end while
+#end def
+
+
+def modul(num):
+    if num >= 0:
+        return num
+    return -1*num
+#end def
+
+
+t = [2,25,11,13,9,5,3]
+bubble_sort_mal(t)
+print(t)
 
