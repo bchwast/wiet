@@ -1,71 +1,63 @@
-def merge(T, a, c, b):
-    n1 = c - a + 1
-    n2 = b - c
-    L = [0] * n1
-    R = [0] * n2
-    for i in range(n1):
-        L[i] = T[a + i]
-    for i in range(n2):
-        R[i] = T[c + i + 1]
-
-    i = j = 0
-    k = a
-    while i < n1 and j < n2:
-        if L[i][0] <= R[j][0]:
-            T[k] = L[i]
+def partition(T, low, high):
+    pivot = T[high][0]
+    i = low - 1
+    for j in range(low, high):
+        if T[j][0] <= pivot:
             i += 1
+            T[i], T[j] = T[j], T[i]
+    T[i + 1], T[high] = T[high], T[i + 1]
+    return i + 1
+
+
+def quicksort(T, low, high):
+    while low < high:
+        med = partition(T, low, high)
+        if med - low < high - med:
+            quicksort(T, low, med - 1)
+            low = med + 1
         else:
-            T[k] = R[j]
-            j += 1
-        k += 1
-
-    while i < n1:
-        T[k] = L[i]
-        i += 1
-        k += 1
-    while j < n2:
-        T[k] = R[j]
-        j += 1
-        k += 1
-
-    return T
-
-
-def nat(T, a):
-    n = len(T)
-    i = a + 1
-    prev = T[a]
-    while i < len(T) and prev[0] <= T[i][0]:
-        prev = T[i]
-        i += 1
-
-    return a, i - 1
-
-
-def mergeSort(T):
-    if T == []:
-        return T
-    while True:
-        a, c, b = 0, 0, 0
-        while a <= len(T) - 1:
-            a, c = nat(T, a)
-            if a == 0 and c == len(T) - 1:
-                return T
-
-            if c == len(T) - 1:
-                break
-
-            _, b = nat(T, c + 1)
-            T = merge(T, a, c, b)
-
-            a = b + 1
+            quicksort(T, med + 1, high)
+            high = med - 1
 
 
 def scopes(T):
-    T = mergeSort(T)
+    edges = [[0, 0, '', 0] for _ in range(2 * len(T))]    # współrzędna, indeks, pocz/kon, il. pocz/kon. wczes/row
+    for i in range(len(T)):
+        edges[2 * i] = [T[i][0], i, 'b', 0]
+        edges[(2 * i) + 1] = [T[i][1], i, 'e', 0]
+
+    quicksort(edges, 0, len(edges) - 1)
+
+    amm_b, amm_e = 0, 0
+    last_b, last_e = -1, -1
+    for i in range(len(edges)):
+        if edges[i][2] == 'b':
+            if edges[i][0] != last_b:
+                amm_b += 1
+                last_b = edges[i][0]
+            edges[i][3] = amm_b
+        else:
+            if edges[i][0] != last_e:
+                amm_e += 1
+                last_e = edges[i][0]
+            edges[i][3] = amm_e
+
+    ranges = [[T[i][0], T[i][1], 0, 0] for i in range(len(T))]
+    for i in range(len(edges)):
+        if edges[i][2] == 'b':
+            ranges[edges[i][1]][0], ranges[edges[i][1]][2] = edges[i][0], edges[i][3]
+        else:
+            ranges[edges[i][1]][1], ranges[edges[i][1]][3] = edges[i][0], edges[i][3]
+
+    max_r, ind = -1, 0
+    for i in range(len(T)):
+        if ranges[i][3] - ranges[i][2] > max_r:
+            max_r = ranges[i][3] - ranges[i][2]
+            ind = i
+
+    return ind
 
 
 
-T = [(1, 4), (2, 4), (5, 9), (1, 2), (10, 23), (3, 8)]
-
-
+T = [(4, 5), (0, 12), (0, 3), (0, 14), (2, 6), (2, 19), (1, 19)]
+print(scopes(T))
