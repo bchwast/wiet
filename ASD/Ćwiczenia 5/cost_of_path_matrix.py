@@ -1,7 +1,16 @@
+def print_solution(map, i, j):
+    if map[i][j] == None:
+        print(f"[{0}][{0}] -> [{i}][{j}]", end=" -> ")
+        return
+    print_solution(map, map[i][j][0], map[i][j][1])
+    print(f"[{i}][{j}]", end=" -> ")
+
+
 def cost_of_path(T):
     rows = len(T)
     columns = len(T[0])
     costs = [[0] * columns for _ in range(rows)]
+    parents = [[None] * columns for _ in range(rows)]
 
     costs[0][0] = T[0][0]
     for i in range(1, columns):
@@ -11,10 +20,17 @@ def cost_of_path(T):
 
     for i in range(1, rows):
         for j in range(1, columns):
-            costs[i][j] = min(costs[i - 1][j], costs[i][j - 1]) + T[i][j]
+            if costs[i - 1][j] < costs[i][j - 1]:
+                costs[i][j] = costs[i - 1][j] + T[i][j]
+                parents[i][j] = (i - 1, j)
+            else:
+                costs[i][j] = costs[i][j - 1] + T[i][j]
+                parents[i][j] = (i, j - 1)
 
-    return costs[rows - 1][columns - 1]
+    return costs[rows - 1][columns - 1], parents
 
 
 T = [[3, 4, 5, 2, 1], [7, 2, 13, 7, 8], [3, 1, 4, 6, 5], [2, 8, 11, 10, 3], [3, 5, 1, 6, 2]]
-print(cost_of_path(T))
+cost, map = cost_of_path(T)
+print(cost)
+print_solution(map, len(T) - 1, len(T) - 1)

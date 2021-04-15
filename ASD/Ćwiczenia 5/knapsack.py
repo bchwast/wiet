@@ -23,10 +23,10 @@ def get_solution(F, W, P, i, w):
     return get_solution(F, W, P, i - 1, w)
 
 
-P = [10, 8, 4, 5, 3, 7]
-W = [4, 5, 12, 9, 1, 13]
-MaxW = 24
+P = [21, 3, 6, 3, 87, 34, 7, 34, 97, 34]
+W = [4, 5, 12, 9, 1, 13, 2, 5, 2, 5]
+MaxW = 30
 
 res, F = knapsack(W, P, MaxW)
 solution = get_solution(F, W, P, len(P) - 1, MaxW)
-print(res, solution)
+print(res)

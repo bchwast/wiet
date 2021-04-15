@@ -1,39 +1,32 @@
-def binary_search(T, indexes, low, high, wanted):
-    while high - low > 1:
-        mid = low + (high - low) // 2
-        if T[indexes[mid]] >= wanted:
-            high = mid
+def get_index(T, low, high, value):
+    if 1 < high - low:
+        mid = (low + high) // 2
+        if T[mid] == value:
+            return mid
+        elif T[mid] > value:
+            return get_index(T, low, mid, value)
         else:
-            low = mid
+            return get_index(T, mid , high, value)
     return high
 
 
 def lis(T):
-    tail_indexes = [0] * (len(T) + 1)
-    parent_indexes = [-1] * (len(T) + 1)
+    tails = [-1] * len(T)
+    tails[0] = T[0]
     length = 1
 
-    for i in range(1, len(T)):
-        if T[i] < T[tail_indexes[0]]:
-            tail_indexes[0] = i
-        elif T[i] > T[tail_indexes[length - 1]]:
-            parent_indexes[i] = tail_indexes[length - 1]
-            tail_indexes[length] = i
+    for i in range(len(T)):
+        if T[i] < tails[0]:
+            tails[0] = T[i]
+        elif tails[length - 1] < T[i]:
+            tails[length] = T[i]
             length += 1
         else:
-            pos = binary_search(T, tail_indexes, -1, length - 1, T[i])
-            parent_indexes[i] = tail_indexes[pos - 1]
-            tail_indexes[pos] = i
+            tails[get_index(tails, 0, length - 1, T[i])] = T[i]
 
-    return length, tail_indexes[length - 1], parent_indexes
+    print(tails)
+    return length
 
 
-def print_solution(T, parent, i):
-    if parent[i] != -1:
-        print_solution(T, parent, parent[i])
-    print(T[i])
-
-T = [2, 5, 3, 7, 11, 8, 10, 13, 6]
-res, ind, parents = lis(T)
-print(res, "\n")
-print_solution(T, parents, ind)
+T = [13, 7, 21, 42, 8, 2, 44, 53]
+print(lis(T))
