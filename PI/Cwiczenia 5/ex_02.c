@@ -3,7 +3,7 @@
 
 int main() {
     unsigned int array_size;
-    int num = 1, border = 0;
+    int num = 0, border = 0;
     scanf("%d", &array_size);
     int n = (int) array_size;
 
@@ -12,30 +12,26 @@ int main() {
         T[i] = (int *)malloc(array_size * sizeof(int));
     }
 
-    while (num <= n * n) {
+    while (num < n * n) {
         for (int i = border; i < n - border; i++) {
+            num++;
             T[border][i] = num;
-            num++;
         }
-        if (num - 1 == n * n) break;
 
-        for (int i = border + 1; i < n - (border + 1); i++) {
+        for (int i = border + 1; i <= n - (border + 1); i++) {
+            num++;
             T[i][(n - 1) - border] = num;
-            num++;
         }
-        if (num - 1 == n * n) break;
 
-        for (int i = (n - 1) - border; i >= border; i--) {
-            T[(n - 1) - border][i] = num;
+        for (int i = (n - 2) - border; i >= border; i--) {
             num++;
+            T[(n - 1) - border][i] = num;
         }
-        if (num - 1 == n * n) break;
 
         for (int i = (n - 1) - (border + 1); i > border; i--) {
-            T[i][border] = num;
             num++;
+            T[i][border] = num;
         }
-        if (num - 1 == n * n) break;
 
         border++;
     }

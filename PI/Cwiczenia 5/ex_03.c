@@ -54,7 +54,15 @@ int main() {
         printf("%d %d\n", results[i][0], results[i][1]);
     }
 
+    for (int i = 0; i < n; i++) {
+        free(T[i]);
+    }
     free(T);
+
+    for (int i = 0; i < n * n; i++) {
+        free(results[i]);
+    }
     free(results);
+
     return 0;
 }
