@@ -38,8 +38,8 @@ def bitonic_tsp(C):
         for j in range(n):
             D[i][j] = distance(C[i], C[j])
 
-    # tworzymy tablicę, w której algorytm będzie umieszczał optymalne długości tras pomiędzy punktem i a j, zawierającej
-    # wszytskie punkty pomiędzy
+    # tworzymy tablicę F[i][j], w której algorytm będzie umieszczał optymalne długości tras rozpoczynających się w i,
+    # kończących się w j (i < j) zawierających wszystkie punkty od i do n - 1
     F = [[float("inf")] * n for _ in range(n)]
 
     # tworzymy tablicę, w której będziemy umieszczać punkty do późniejszego odtworzenia trasy
@@ -53,7 +53,8 @@ def bitonic_tsp(C):
     for i in range(n - 3, -1, -1):
         minimal = float("inf")
 
-        # szukamy minimalnego kosztu trasy, gdy punkty i - k są na jednej ścieżce
+        # szukamy minimalnego kosztu trasy, gdy punkty i oraz k są na jednej ścieżce (i + 1 < k <= n - 1), a punkty od
+        # i + 1 do k - 1 na drugiej
         for k in range(i + 2, n):
             if minimal > F[i + 1][k] + D[i][k]:
                 minimal = F[i + 1][k] + D[i][k]
@@ -62,7 +63,7 @@ def bitonic_tsp(C):
         # zapamiętujemy k, dla którego otrzymaliśmy minimalny koszt
         path[i][i + 1] = mink
 
-        # szukamy minimalnego kosztu trasy, gdy punkty i - (i + 1) są na jednej ścieżce, a j na drugiej
+        # szukamy minimalnego kosztu trasy, gdy punkty od i do j - 1 są na jednej ścieżce, a j na drugiej (i + 1 < j)
         for j in range(i + 2, n):
             F[i][j] = F[i + 1][j] + D[i][i + 1]
             # zapamiętujemy i + 1
