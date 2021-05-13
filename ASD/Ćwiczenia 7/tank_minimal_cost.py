@@ -1,5 +1,5 @@
-# tankujemy tyle, żeby móc dojechać do stacji o najtańszej benzynie, jeżeli nasz bak nie ma takiej pojemności, żeby móc
-# dotrzeć do stacji o najtańszej benzynie lub jesteśmy na takiej stacji to tankujemy do pełna
+# tankujemy tyle, żeby móc dojechać do pierwszej stacji o tańszej benzynie, jeżeli nasz bak nie ma takiej pojemności,
+# żeby móc dotrzeć do stacji o tańszej benzynie lub jesteśmy na stacji o najtańszej benzynie to tankujemy do pełna
 
 
 def tank(S, P, L, t):
@@ -37,10 +37,10 @@ def tank(S, P, L, t):
     return cost
 
 
-S = [5, 8, 12, 15, 27, 30, 43, 50]
-P = [6, 2, 4, 256, 3, 65, 12, 1]
-t = 56
-L = 15
+L = 10
+S = [8, 11, 15, 16]
+P = [40, 7, 15, 12]
+t = 23
 print(tank(S, P, L, t))
 
 

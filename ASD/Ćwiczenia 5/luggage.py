@@ -1,4 +1,10 @@
-def tssum(T, target):
+# Szukamy podciągu sumującego się do W/2
+
+def tssum(T, W):
+    if W % 2 != 0:
+        return False
+
+    target = W // 2
     n = len(T)
     F = [[False] * (target + 1) for _ in range(n + 1)]
 
@@ -13,9 +19,3 @@ def tssum(T, target):
                 F[i][j] = (F[i - 1][j] or F[i - 1][j - T[i - 1]])
 
     return F[n][target]
-
-
-
-
-T = [3, 34, 4, 12, 5, 2]
-print(tssum(T, 13))

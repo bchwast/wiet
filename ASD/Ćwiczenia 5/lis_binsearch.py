@@ -1,31 +1,40 @@
-def get_index(T, low, high, value):
+def get_index(T, tails, low, high, value):
     if 1 < high - low:
         mid = (low + high) // 2
-        if T[mid] == value:
+        if T[tails[mid]] == value:
             return mid
-        elif T[mid] > value:
-            return get_index(T, low, mid, value)
+        elif T[tails[mid]] > value:
+            return get_index(T, tails, low, mid, value)
         else:
-            return get_index(T, mid , high, value)
+            return get_index(T, tails, mid , high, value)
     return high
 
 
+def get_solution(T, parent, ind):
+    if parent[ind] == -1:
+        return [T[ind]]
+    return get_solution(T, parent, parent[ind]) + [T[ind]]
+
+
 def lis(T):
-    tails = [-1] * len(T)
-    tails[0] = T[0]
+    tails = [0] * len(T)
+    parent = [-1] * len(T)
     length = 1
 
     for i in range(len(T)):
-        if T[i] < tails[0]:
-            tails[0] = T[i]
-        elif tails[length - 1] < T[i]:
-            tails[length] = T[i]
+        if T[i] < T[tails[0]]:
+            tails[0] = i
+        elif T[tails[length - 1]] < T[i]:
+            tails[length] = i
+            parent[i] = tails[length - 1]
             length += 1
         else:
-            tails[get_index(tails, 0, length - 1, T[i])] = T[i]
+            pos = get_index(T, tails, 0, length - 1, T[i])
+            tails[pos] = i
+            parent[i] = tails[pos - 1]
 
-    print(tails)
-    return length
+    result = get_solution(T, parent, tails[length - 1])
+    return length, result
 
 
 T = [13, 7, 21, 42, 8, 2, 44, 53]
