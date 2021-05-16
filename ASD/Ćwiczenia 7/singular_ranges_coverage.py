@@ -1,3 +1,8 @@
+"""Dany jest zbiór punktów X = {x1, . . . , xn} na
+prostej. Prosze podac algorytm, który znajduje minimalna liczbe przedziałów jednostkowych domknietych,
+potrzebnych do pokrycia wszystkich punktów z X. (Przykład: Jesli X = {0.25, 0.5, 1.6} to potrzeba dwóch
+przedziałów, np. [0.2, 1.2] oraz [1.4, 2.4])."""
+
 # sortujemy punkty z X niemalejąco, początek przedziału kładziemy w pierwszym punkcie, który nie jest zakryty. całość
 # powtarzamy aż przykryjemy wszystkie punkty
 

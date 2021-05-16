@@ -1,3 +1,8 @@
+"""Kazdy klocek to przedział postaci [a, b]. Dany jest ciag klocków [a1, b1],
+[a2, b2], . . ., [an, bn]. Klocki spadaja na os liczbowa w kolejnosci podanej w ciagu. Prosze zaproponowac
+algorytm, który oblicza ile klocków nalezy usunac z listy tak, zeby kazdy kolejny spadajacy klocek miescił
+sie w całosci w tam, który spadł tuz przed nim."""
+
 # zmodyfikowany lis
 
 

@@ -1,5 +1,14 @@
 from queue import Queue
 
+"""Dana jest dwuwymiarowa tablica N x N, w której każda komórka ma wartość “W” - reprezentującą wodę lub “L” - ląd. 
+ Grupę komórek wody połączonych ze sobą brzegami nazywamy jeziorem.
+ a) Policz, ile jezior jest w tablicy
+ b) Policz, ile komórek zawiera największe jezioro
+ c) Zakładając, że pola o indeksach [0][0] i [n-1][n-1] są lądem, sprawdź czy da się przejść drogą lądową z pola [0][0] 
+    do pola [n-1][n-1]. Można chodzić tylko na boki, nie na ukos.
+ d) Znajdź najkrótszą ścieżkę między tymi punktami. Wypisz po kolei indeksy pól w tej ścieżce
+"""
+
 # a) i b) przechodzimy po tablicy i zapuszczamy dfs'a w momencie trafienia na wodę, na każdym polu z wodą ustawiamy, że
 # zostało odwiedzone
 

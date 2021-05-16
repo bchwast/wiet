@@ -1,3 +1,14 @@
+"""Dostajemy tablicę (M x N) wypełnioną wartościami. Mamy za zadanie znaleźć najdłuższą ścieżkę w tej tablicy
+ (możemy przechodzić na pola sąsiadujące krawędziami), o rosnących wartościach (to znaczy, że z pola o wartości 3,
+  mogę przejść na pola o wartości większej bądź równej 4)."""
+
+# f(i, j) - długość najdłuższej ścieżki zaczynającej się w (i, j)
+
+# początkowo dla każedego i, j - f(i, j) = 1
+# f(i, j) = max(f(i - 1, j), f(i, j + 1), f(i + 1, j), f(i, j - 1)) + 1 ; o ile nie wychodzimy z tablicy i przechodzimy
+#                                                                        na pole o większej wartości
+
+
 def path(T, lengths, i, j):
     if lengths[i][j] > -1:
         return lengths[i][j]

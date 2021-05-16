@@ -1,3 +1,14 @@
+"""Dany jest cieg macierzy A1,A2, . . . ,An. Ktos chce policzyc iloczyn
+A1A2...An. Macierze nie sa koniecznie kwadratowe (ale oczywiscie znamy ich rozmiary). Zaleznie w jakiej
+kolejnosci wykonujemy mnozenia, koszt obliczeniowy moze byc rózny—nalezy podac algorytm znajdujacy
+koszt mnozenia przy optymalnym doborze kolejnosci."""
+
+# f(i, j) - minimalny koszt mnożenia macierzy od i do j
+
+# f(i, j) = 0 ; i == j
+# f(i, j) = min(f(i, k) + f(k + 1, j) + dim(i - 1)*dim(k)*dim(j)) ; i <= k < j
+
+
 def print_solution(best, low, high):
     if high == low:
         print(f"F[{high}]", end="")

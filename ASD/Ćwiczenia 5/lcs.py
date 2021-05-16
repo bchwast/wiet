@@ -1,3 +1,13 @@
+"""Mamy dane dwie tablice, A[n] i B[n]. Nalezy znalezc
+długosc ich najdłuzszego wspólnego podciagu."""
+
+# f(i, j) - długość najdłuższego wspólnego podciąg wykorzystując i pierwszych wyrazów z A oraz j pierwszych wyrazów z B
+
+# f(i, j) = 0 ; i == 0 or j == 0
+# f(i, j) = f(i - 1, j - 1) + 1; A[i] == B[j]
+# f(i, j) = max(f(i - 1, j), f(i, j - 1)
+
+
 def lcs(A, B):
     n = len(A)
     F = [[0] * n for _ in range(n)]

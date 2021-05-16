@@ -1,3 +1,7 @@
+"""Dana jest posortowana tablica A zawierajaca n liczb i celem jest wyznaczenie
+liczby x takiej, ze wartosc sum(i = 0, n - 1)|A[i] − x| jest minimalna. Prosze zaproponowac algorytm, uzasadnic
+jego poprawnosc oraz ocenic złozonosc obliczeniowa."""
+
 # wystarczy zwrócić medianę
 
 

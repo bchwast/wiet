@@ -1,3 +1,11 @@
+"""Wyobraźmy sobie podziemny labirynt, złożony z ogromnych jaskiń połączonych wąskimi korytarzami. W jednej z jaskiń
+ krasnoludy zbudowały swoją osadę, a w każdej z pozostałych jaskiń mieszka znana krasnoludom ilość trolli.
+ Krasnoludy chcą zaplanować swoją obronę na wypadek ataku ze strony trolli.
+ Zamierzają w tym celu zakraść się i podłożyć ładunek wybuchowy pod jeden z korytarzy, tak aby trolle mieszkające za
+ tym korytarzem nie miały żadnej ścieżki, którą mogłyby dotrzeć do osady krasnoludów.
+ Który korytarz należy wysadzić w powietrze, aby odciąć dostęp do krasnoludzkiej osady największej liczbie trolli?
+"""
+
 # zapisujemy ile trolli znajduje się w wierzchołku i jego dzieciach, szukamy mostu, którego usunięcie zabierze nam
 # najwięcej trolli
 

@@ -1,3 +1,7 @@
+"""Dane jest drzewo ukorzenione T, gdzie kazdy wierzchołek v ma—
+potencjalnie ujemna—wartosc value(v). Prosze zaproponowac algorytm, który znajduje wartosc najbardziej
+wartosciowej sciezki w drzewie T."""
+
 # f(v) - wartość najbardziej wartościowej ścieżki zaczynającej się na v i kierującej się w stronę liści
 
 # f(v) = max(0, v.val, v.val + f(v.left), v.val + f(v.right))

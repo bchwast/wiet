@@ -1,3 +1,16 @@
+"""Dana jest szachownica A o wymiarach n × n. Szachownica
+zawiera liczby wymierne. Nalezy przejsc z pola (1, 1) na pole (n,n) korzystajac jedynie z ruchów “w dół”
+oraz “w prawo”. Wejscie na dane pole kosztuje tyle, co znajdujaca sie tam liczba. Prosze podac algorytm
+znajdujacy trase o minimalnym koszcie."""
+
+# f(i, j) - minimalny koszt dostania się z pola [0][0] na pole [i][j]
+
+# f(0, 0) = 0
+# f(i, 0) = sum(k = 0, i)A[k][0]
+# f(0, j) = sum(k = 0, j)A[0][k]
+# f(i, j) = min(f(i - 1, j), f(i, j - 1)) + A[i][j]
+
+
 def print_solution(map, i, j):
     if map[i][j] == None:
         print(f"[{0}][{0}] -> [{i}][{j}]", end=" -> ")

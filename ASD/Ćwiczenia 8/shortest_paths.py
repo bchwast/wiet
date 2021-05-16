@@ -5,6 +5,13 @@ class Node:
         self.val = val
         self.next = None
 
+"""Prosze zaimplementowac algorytm BFS tak, zeby znajdował
+ najkrótsze sciezki w grafie i nastepnie, zeby dało sie wypisac najkrotsza sciezke z zadanego punktu startowego
+ do wskazanego wierzchołka."""
+
+# odpalamy bfs'a, zapisujemy wierzchołki, z których weszliśmy do danych, sam bfs znajdzie nam najkrótszą ścieżkę
+# rekurencyjną funkcją cofając się po parentach dostaniemy rozwiązanie
+
 
 def path(parent, u):
     if parent[u] is None:

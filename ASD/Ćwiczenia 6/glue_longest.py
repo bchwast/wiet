@@ -1,3 +1,8 @@
+"""Dany jest ciag przedziałów postaci [ai, bi]. Dwa przedziały mozna
+skleic jesli maja dokładnie jeden punkt wspólny. Prosze wskazac algorytmy dla nastepujacych problemów:
+
+Problem stwierdzenia jaki najdłuzszy odcinek mozna uzyskac sklejajac najwyzej k odcinków."""
+
 # f(i, j) - minimalna liczba przedziałów, które trzeba skleić, żeby powstał przedział od i do j
 
 # f(i, j) = False - nie da się uzyskać przedziału od i do j

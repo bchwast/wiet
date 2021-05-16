@@ -1,3 +1,16 @@
+"""Dostając na wejściu string złożony z liter a-z, zwrócić najdłuższy jego fragment, który jest palindromem.
+Palindrom to ciąg znaków, który wygląda tak samo czytany zarówno od lewej, jak i od prawej strony.
+"""
+
+# f(i, j) = {False, True} - czy string od i do j jest palindromem
+
+# f(i, i) = True
+# f(i, i + 1) = T[i] == T[i + 1]
+# f(i, j) = f(i + 1, j - 1) and T[i] == T[j]
+
+# zwracamy największe l = j - i + 1, dla którego f(i, j) == True
+
+
 def palindrome(text):
     n = len(text)
 
@@ -22,8 +35,10 @@ def palindrome(text):
                 if l > maxl:
                     maxl = l
 
-    return maxl
+    for i in range(n - maxl + 1):
+        if solutions[i][i + maxl - 1]:
+            return maxl, text[i:i+maxl]
 
 
-T = "bee"
+T = "najak"
 print(palindrome(T))

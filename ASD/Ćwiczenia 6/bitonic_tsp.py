@@ -1,5 +1,16 @@
 from math import *
 
+"""Dane: C = {0, ..., n - 1} - zbiór miast, d(i, j) - odległość euklidesowa w R^2 pomiędzy miastem i a miastem j
+   Zadanie: Znaleźć taką kolejność odwiedzania miast, że startujemy w 0, każde miasto odwiedzamy jednokrotnie, kończymy
+            w mieście 0 i suma pokonanych odległości jest minimalna. Na trasie współrzędne x miast najpierw rosną a 
+            potem maleją"""
+
+# f(i, j) - minimalny koszt ścieżki od 0 do i oraz od 0 do j (0 < i < j) takich, że odwiedzają każde miasto ze zbioru
+#           {1, ..., i, ..., j} dokładnie jeden raz
+
+# f(i, j) = f(i, j - 1) + d(j - 1, j) ; i < j - 1
+# f(i, j) = min(f(k, j - 1) + d(k, j)) ; 1 <= k < j - 1
+
 
 def distance(a, b):
     return sqrt(((a[1] - b[1]) * (a[1] - b[1])) + ((a[2] - b[2]) * (a[2] - b[2])))

@@ -1,8 +1,14 @@
+"""Black Forest to las rosnacy na osi liczbowej gdzies w południowej Anglii. Las
+składa sie z n drzew rosnacych na pozycjach 0, . . . ,n−1. Dla kazdego i > {0, . . . ,n−1} znany jest zysk ci, jaki
+mozna osiagnac scinajac drzewo z pozycji i. John Lovenoses chce uzyskac maksymalny zysk ze scinanych
+drzew, ale prawo zabrania scinania dwóch drzew pod rzad. Prosze zaproponowac algorytm, dzieki któremu
+John znajdzie optymalny plan wycinki"""
+
 # f(i) - maksymalny zysk ze ścięcia drzew od 0 do i
 
-# f(i) = max(f(i - 2) + c[i], f(i - 1)); i >= 2
 # f(0) = c[0]
 # f(1) = max(c[0], c[1])
+# f(i) = max(f(i - 2) + c[i], f(i - 1)); i >= 2
 
 
 def black_forest(C):

@@ -1,3 +1,8 @@
+"""Dana jest tablica A[n] z długosciami samochodów, które stoja w kolejce,
+zeby wjechac na prom. Prom ma dwa pasy (lewy i prawy), oba długosci L. Prosze napisac program, który
+wyznacza, które samochody powinny pojechac na który pas, zeby na promie zmiesciło sie jak najwiecej aut.
+Auta musza wjezdzac w takiej kolejnosci, w jakiej sa podane w tablicy A."""
+
 # f(i, l) = 1,   pierwsze i samochodów można rozmieścić na promie tak, że zostanie l wolnego miejsca na lewym pasie
 #         = 0,   w p. p.
 

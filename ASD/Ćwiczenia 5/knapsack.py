@@ -1,3 +1,15 @@
+"""Dane: n przedmiotów, W[i] - waga i-tego przedmiotu, P[i] - zysk z i-tego przedmiotu, MaxW - maksymalna dopuszczalna
+         wwaga plecaka
+   Zadanie: Wybrać przedmioty o jak największym sumarycznym zysku, nie przekraczające łącznie wagi MaxW"""
+
+# f(i, w) - maksymalny zysk z wzięcia przedmiotów od 0 do i przy wadze nie przekraczającej w
+
+# f(i, 0) = 0
+# f(0, w) = 0 ; W[0] > MaxW
+# f(0, w) = P[0] ; W[0] <= MaxW
+# f(i, w) = max(f(i - 1, w), f(i - 1, w - W[i]) + P[i])) ; w >= W[i]
+
+
 def knapsack(W, P, MaxW):
     n = len(W)
     F = [[0] * (MaxW + 1) for _ in range(n)]

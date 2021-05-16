@@ -1,3 +1,12 @@
+"""Dane: ciąg liczb A[0], ..., A[n - 1]
+   Zadanie: Znaleźć długość najdłuższego podciągu rosnącego"""
+
+# f(i) - długość najdłuższego podciąg rosnącego kończącego się na A[i]
+
+# f(0) = 1
+# f(i) = max(f(i - k)) + 1; 1 <= k <= i; A[i - k] < A[i]
+
+
 def lis(T):
     longest = [1] * len(T)
     parent = [-1] * len(T)

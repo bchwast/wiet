@@ -1,3 +1,6 @@
+"""Dostajemy na wejściu listę krawędzi drzewa (niekoniecznie binarnego!) oraz wyróżniony wierzchołek - korzeń.
+ Każdy wierzchołek tworzy swoje własne poddrzewo. Dla każdego wierzchołka, wyznacz ilość wierzchołków w jego poddrzewie."""
+
 # przechodzimy po drzewie dfs'em, i zliczamy node'y, jak natrafimy na koniec poddrzewa to wracamy się wyżej i zwiększamy
 # rozmiar o rozmiar zbadanego poddrzewa
 

@@ -1,3 +1,7 @@
+"""Mówimy, ze wierzchołek t w grafie skierowanym jest uniwersalnym
+ ujsciem, jesli (a) z kazdego innego wierzchołka v istnieje krawedz z v do t, oraz (b) nie istnieje zadna krawedz
+ wychodzaca z t."""
+
 # trzymamy na stosie dwa wierzchołki (p, q), jeżeli istnieje krawędź z p do q, to p na pewno nie jest ujściem i go
 # odrzucamy, jeżeli nie istnieje krawędź z p do q, to q na pewno nie jest ujściem i go odrzucamy. po przejściu wszystkich
 # wierzchołków zostanie nam jeden kandydat na ujście. teraz wystarczy sprawdzić, przechodząc po wszystkich wierzchołkach,

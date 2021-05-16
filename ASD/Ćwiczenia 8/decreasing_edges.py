@@ -1,5 +1,9 @@
 from queue import Queue
 
+"""Dany jest graf G = (V,E), gdzie kazda krawedz ma wage ze zbioru
+ {1, . . . , |E|} (wagi krawedzi sa parami rózne). Prosze zaproponowac algorytm, który dla danych wierzchołków
+ x i y sprawdza, czy istnieje sciezka z x do y, w której przechodzimy po krawedziach o coraz mniejszych wagach."""
+
 # graf w postaci listy sąsiedztwa, gdzie dla każdego wierzchołka mamy listę krotek zawierającą wierzchołek, z którym jest
 # połączony krawędzią oraz wagę tej krawędzi
 
@@ -8,7 +12,6 @@ from queue import Queue
 
 
 def decreasing_edges(G, x, y):
-    n = len(G)
     Q = Queue()
     Q.put((x, float("inf")))
 

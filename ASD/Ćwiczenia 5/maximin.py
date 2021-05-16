@@ -1,3 +1,14 @@
+"""Rozwazmy ciag (a0, . . . , an−1) liczb naturalnych. Załózmy, ze został podzielony
+na k spójnych podciagów: (a0, . . . , a`1), (a`1+1, . . . , a`2), . . . , (a`k−1+1, . . . , an−1). Przez wartosc i-go podciagu
+rozumiemy sume jego elementów a przez najgorszy podciag rozumiemy podciag o najmniejszej wartosci (rozstrzygajac
+remisy w dowolny sposób). Wartoscia podziału jest wartosc jego najgorszego podciagu. Zadanie
+polega na znalezienie podziału ciagu (a0, . . . , an−1) o maksymalnej wartosci."""
+
+# f(m , p) - największa wartość najgorszego podziału dzieląc p pierwszych liczb na m spójnych podciągów
+
+# f(m, p) = max(min(f(p - i, m - 1), sum(j = i + 1, p)T[i])); 0 <= i <= p - m
+
+
 def maximin(T, k):
     F = [[float("-inf")] * len(T) for _ in range(k)]
 

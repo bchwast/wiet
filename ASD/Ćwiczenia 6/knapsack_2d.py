@@ -1,3 +1,14 @@
+"""Prosze zaproponowac algorytm dla dwuwymiarowej
+wersji dyskretnego problemu plecakowego. Mamy dany zbiór P = {p1, . . . , pn} przedmiotów i dla kazdego
+przedmiotu pi dane sa nastepujace trzy liczby:
+1. v(pi) – wartosc przedmiotu,
+2. w(pi) – waga przedmiotu, oraz
+3. h(pi) – wysokosc przedmiotu.
+Złodziej chce wybrac przedmioty o maksymalnej wartosci, których łaczna waga nie przekracza danej liczby
+W oraz których łaczna wysokosc nie przekracza danej liczby H (przedmioty zapakowane sa w kartony, które
+złodziej układa jeden na drugim). Prosze oszacowac złozonosc czasowa swojego algorytmu oraz uzasadnic
+jego poprawnosc."""
+
 # f(i, w, h) - największy zysk jaki można uzyskać spośród przedmiotów od 0 do i nie przekraczając wagi w i wysokości h
 
 # f(0, w, h) = {0    ; w(0) > W || h(0) > H

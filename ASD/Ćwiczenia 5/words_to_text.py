@@ -1,3 +1,13 @@
+"""Dana jest tablica string S[n] będąca zbiorem słów oraz ciąg znaków string t. Napisz funkcję, która
+znajdzie najmniejszy taki ciąg słów ze zbioru S, aby po ich złączeniu otrzymać tekst t"""
+
+# f(i, j) - długość najmniejszego ciągu spośród i pierwszych słów ze zbioru S, takiego, że tworzy tekst składający się
+#           z j pierwszych liter tekstu t
+
+# f(0, j) = 0
+# f(i, j) = min(f(i - k, j - S[k])) + 1 ;  1 <= k <= i ; jeżeli utworzenie stringa jest możliwe
+
+
 def construct_text(words, text):
     solutions = [[["", None] for _ in range(len(text) + 1)] for _ in range(len(words))]
 

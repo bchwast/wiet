@@ -1,3 +1,15 @@
+"""Dostajemy listę wartości. Gramy z drugim graczem. Wybieramy zawsze jedną wartość z jednego z końców tablicy i dodajemy
+ do swojej sumy, a następnie to samo robi nasz przeciwnik. Zakładając, że przeciwnik gra optymalnie, jaką maksymalną sumę
+  możemy uzbierać?
+“Uogólniony problem paczki mentosów”
+"""
+
+# f(i, j) - maksymalna suma jaką możemy uzbierać dla tablicy od i do j
+
+# f(i, j) = max(T[i] + min(f(i + 2, j), f(i + 1, j - 1)), T[j] + min(f(i + 1, j - 1), f(i, j - 2))) ; o ile mamy na tyle
+#                                                                                                     tablicy
+
+
 def optimal_strategy(T):
     n = len(T)
     solutions = [[0] * n for _ in range(n)]

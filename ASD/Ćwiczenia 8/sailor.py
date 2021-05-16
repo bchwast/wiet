@@ -1,6 +1,16 @@
 from queue import Queue
 from math import sqrt
 
+"""Żeglarz Henryk mieszka na wysepce pewnego archipelagu. Wszystkie wyspy w tym archipelagu są tak małe,
+ że można je reprezentować jako punkty w przestrzeni R2. 
+ Pozycje wszystkich wysp dane są jako ciąg W = ((x1, y1), … , (xn, yn)). 
+ Henryk mieszka na wyspie(x1, y1), ale chce się przeprowadzić na wyspę (xn, yn).  
+ Normalnie, każdego dnia może przepłynąć na wyspę znajdującą się w odległości najwyżej Z 
+ (w sensie standardowej odległości euklidesowej), ale może także każdego dnia przepłynąć odległość do 2Z, 
+ pod warunkiem, że cały następny dzień będzie odpoczywał. Henryk musi zawsze nocować na jakiejś wyspie. 
+ Proszę zaproponować (bez implementacji) wielomianowy algorytm, który oblicza ile minimalnie dni Henryk potrzebuje, 
+ żeby dostać się na swoją docelową wyspę (lub stwierdza, że to niemożliwe)."""
+
 # tworzymy graf, w któym wyspy są wierzchołkami, pomiędzy wierzchołkami, które są we wzajemnej odległości <= Z wstawiamy
 # krawędź o wadze 1, a pomiędzy tymi, które są we wzajemnej odległości > Z, ale <= 2Z wstawiamy krawędź o wadze 2.
 # puszczamy bfs'a z wyspy startowej, jeżeli ściągneliśmy wierzchołek wrzucony z wagą 2, to wrzucamy go spowrtem do kolejki

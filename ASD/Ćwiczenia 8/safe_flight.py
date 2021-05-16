@@ -1,3 +1,11 @@
+"""Dany jest graf G = (V,E), którego wierzchołki reprezentuja punkty
+nawigacyjne nad Bajtocja, a krawedzie reprezentuja korytarze powietrzne miedzy tymi punktami. Kazdy
+korytarz powietrzny ei > E powiazany jest z optymalnym pułapem przelotu pi > N (wyrazonym w metrach).
+Przepisy dopuszczaja przelot danym korytarzem jesli pułap samolotu rózni sie od optymalnego najwyzej o t
+metrów. Prosze zaproponowac algorytm (bez implementacji), który sprawdza czy istnieje mozliwosc przelotu
+z zadanego punktu x > V do zadanego punktu y > V w taki sposób, zeby samolot nigdy nie zmieniał pułapu.
+Algorytm powinien byc poprawny i mozliwie jak najszybszy. Prosze oszacowac jego złozonosc czasowa."""
+
 # sprawdzamy czy będziemy w stanie przelecieć od x do y na pułapie takim jak pułap każdego z połączeń wychodzących z x
 # +/- t
 

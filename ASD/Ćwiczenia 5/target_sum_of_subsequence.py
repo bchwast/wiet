@@ -1,3 +1,13 @@
+"""Dana jest tablica n liczb naturalnych A. Prosze podac i zaimplementowac
+algorytm, który sprawdza, czy da sie wybrac podciag liczb z A, które sumuja sie do zadanej
+wartosci T."""
+
+# f(i, j) = {0, 1} - czy można otrzymać sumę j używając i pierwszych liczb z A
+
+# f(i, 0) = 1
+# f(i ,j) = f(i - 1, j) or f(i - 1, j - A[i - 1])
+
+
 def tssum(T, target):
     n = len(T)
     F = [[False] * (target + 1) for _ in range(n + 1)]

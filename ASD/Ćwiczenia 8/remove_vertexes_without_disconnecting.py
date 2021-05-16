@@ -1,3 +1,10 @@
+"""Znany operator telefonii komórkowej Pause postanowił zakonczyc działalnosc w
+Polsce. Jednym z głównych elementów całej procedury jest wyłaczenie wszystkich stacji nadawczych (które
+tworza spójny graf połaczen). Ze wzgledów technologicznych urzadzenia nalezy wyłaczac pojedynczo a operatorowi
+dodatkowo zalezy na tym, by podczas całego procesu wszyscy abonenci znajdujacy sie w zasiegu
+działajacych stacji mogli sie ze soba łaczyc (czyli by graf pozostał spójny). Prosze zaproponowac algorytm
+podajacy kolejnosc wyłaczania stacji."""
+
 # odpalamy dfs'a, każdy wierzchołek po przetworzeniu wrzucamy na stos, poprawną kolejnością usuwania jest kolejność
 # odwrotna do kolejność wierzchołków względem ich czasów przetworzenia. wystarczy nam jedno wykonanie dfs'a, zatem
 # złożoność wyniesie O(n + m), czyli maksymalnie O(n^2) dla grafu pełnego

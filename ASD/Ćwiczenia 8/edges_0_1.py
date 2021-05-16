@@ -1,5 +1,10 @@
 from queue import Queue
 
+"""Dana jest mapa kraju w postaci grafu G = (V,E). Kierowca chce przejechac
+ z miasta (wierzchołka) s to miasta t. Niestety niektóre drogi (krawedzie) sa płatne. Kazda droga ma taką
+ samą jednostkowa opłate. Prosze podac algorytm, który znajduje trase wymagajaca jak najmniejszej liczby
+ opłat. W ogólnosci graf G jest skierowany, ale mozna najpierw wskazac algorytm dla grafu nieskierowanego."""
+
 # graf w postaci listy sąsiedztwa, gdzie dla każdego wierzchołka mamy listę krotek zawierającą wierzchołek, z którym jest
 # połączony krawędzią oraz wagę tej krawędzi
 
