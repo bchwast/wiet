@@ -1,4 +1,5 @@
-from k1_ex3_testy import runtests
+from e1_ex3_testy import runtests
+from math import log
 
 
 def insertionsort(T):
@@ -11,23 +12,15 @@ def insertionsort(T):
         T[j + 1] = el
 
 
-def bucketsort(T, mode):
-    if len(T) <= 1:
-        return
+def bucketsort(T):
     maxEl, minEl = max(T), min(T)
-    if maxEl == minEl:
-        return
     bucketTab = [[] for _ in range(len(T))]
     bucketRange = (maxEl - minEl) / len(T)
     for i in range(len(T)):
         bucketTab[min(int((T[i] - minEl) / bucketRange), len(T) - 1)].append(T[i])
 
-    if mode == 0:
-        for i in range(len(T)):
-            bucketsort(bucketTab[i], 1)
-    else:
-        for i in range(len(T)):
-            insertionsort(bucketTab[i])
+    for i in range(len(T)):
+        insertionsort(bucketTab[i])
 
     ind = 0
     for i in range(len(T)):
@@ -35,9 +28,16 @@ def bucketsort(T, mode):
             T[ind] = bucketTab[i][j]
             ind += 1
 
+                 
+    
+def fast_sort(tab, a):
+    n = len(tab)
+    T = [log(tab[i], a) for i in range(n)]
+    bucketsort(T)
+    for i in range(n):
+        tab[i] = a ** T[i]
+    return tab
 
-def SortTab(T,P):
-    bucketsort(T, 0)
-    return
 
-runtests( SortTab )
+
+runtests( fast_sort )

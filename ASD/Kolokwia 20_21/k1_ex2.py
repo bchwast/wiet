@@ -1,131 +1,83 @@
-import timeit
+from k1_ex2_testy import runtests
+
 
 class Node:
   def __init__(self):
     self.val = None
-    self.next = None
+    self.next = None 
 
 
-def tab2list(T):
+def left(i): return 2 * i + 1
+
+
+def right(i): return 2 * i + 2
+
+
+def parent(i): return (i - 1) // 2
+
+
+def minHeapify(T, n, i):
+    m = i
+    if left(i) < n and T[left(i)][0] < T[m][0]:
+        m = left(i)
+    if right(i) < n and T[right(i)][0] < T[m][0]:
+        m = right(i)
+
+    if m != i:
+        T[m], T[i] = T[i], T[m]
+        minHeapify(T, n, m)
+
+
+def buildMinHeap(T):
+    n = len(T)
+    for i in range(parent(n - 1), -1, -1):
+        minHeapify(T, n, i)
+
+
+def minHeapInsert(T, el):
+    T.append(el)
+    curr = len(T) - 1
+    while curr > 0 and T[curr][0] < T[parent(curr)][0]:
+        T[curr], T[parent(curr)] = T[parent(curr)], T[curr]
+        curr = parent(curr)
+
+
+def extractMin(T):
+    el = T[0]
+    T[0], T[len(T) - 1] = T[len(T) - 1], T[0]
+    T.pop(len(T) - 1)
+    minHeapify(T, len(T), 0)
+    return el
+
+
+def SortH(p, k):
+    Q = []
     head = Node()
+    head.val = "|"
     tail = head
-    for i in range(len(T)):
-        el = Node()
-        el.val = T[i]
-        tail.next = el
-        tail = el
+    i = 0
+    while i <= k and p is not None:
+        temp = p
+        p = p.next
+        temp.next = None
+        Q.append((temp.val, temp))
+        i += 1
+
+    buildMinHeap(Q)
+    while p is not None:
+        tail.next = extractMin(Q)[1]
+        tail = tail.next
+        temp = p
+        p = p.next
+        temp.next = None
+        minHeapInsert(Q, (temp.val, temp))
+
+    while len(Q) > 0:
+        tail.next = extractMin(Q)[1]
+        tail = tail.next
+
     return head.next
 
 
-def printList(L):
-    while L != None:
-        print(L.val, end=" -> ")
-        L = L.next
-    print("|")
 
-
-def getTail(L):
-    if L == None or L.next == None:
-        return L
-
-    prev = None
-    while L != None:
-        prev = L
-        L = L.next
-
-    return prev
-
-
-def partition(L, pivot):
-    smaller = Node()
-    tail_s = smaller
-    equal = Node()
-    tail_e = equal
-    larger = Node()
-    tail_l = larger
-
-    while L != None:
-        if L.val < pivot.val:
-            tail_s.next = L
-            tail_s = tail_s.next
-        elif L.val == pivot.val:
-            tail_e.next = L
-            tail_e = tail_e.next
-        else:
-            tail_l.next = L
-            tail_l = tail_l.next
-        L = L.next
-
-        tail_s.next = None
-        tail_e.next = None
-        tail_l.next = None
-
-    return smaller, tail_s, equal.next, tail_e, larger, tail_l
-
-
-def quicksort(Head, Tail):
-    if Head == Tail:
-        return Head, Tail
-
-    sHead, sTail, eHead, eTail, lHead, lTail = partition(Head, Head)
-
-    if sHead == sTail:
-        sHead = eHead
-        sTail = eHead
-    else:
-        sHead = sHead.next
-        sHead, sTail = quicksort(sHead, sTail)
-        sTail.next = eHead
-
-    if lHead == lTail:
-        lHead = eTail
-        lTail = eTail
-    else:
-        lHead = lHead.next
-        lHead, lTail = quicksort(lHead, lTail)
-        eTail.next = lHead
-
-    return sHead, lTail
-
-
-def qsort(L):
-    if L == None:
-        return None
-
-    l = getTail(L)
-    L, l = quicksort(L, l)
-    return L, l
-
-
-def SortH(p,k):
-    head = p
-    tail = p
-
-    for _ in range(k + 1):
-        tail = tail.next
-
-    while tail != None:
-        temp = tail.next
-        tail.next = None
-        head, tail = qsort(head)
-        tail.next = temp
-        head = head.next
-        tail = tail.next
-
-    return p
-
-T = [2, 5, 3, 7, 13, 11, 17, 19, 29, 23, 31, 37, 43, 41, 47, 53, 59, 67, 61, 73, 71, 79, 83, 89]
-
-L1 = tab2list(T)
-L2 = tab2list(T)
-
-start1 = timeit.default_timer()
-L1 = SortH(L1, 10)
-stop1 = timeit.default_timer()
-
-start2 = timeit.default_timer()
-L2, _ = qsort(L2)
-stop2 = timeit.default_timer()
-
-print(stop1 - start1)
-print(stop2 - start2)
+runtests( SortH )

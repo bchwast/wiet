@@ -1,3 +1,5 @@
+from kp2_ex1_testy import runtests
+
 def partition(T, low, high):
     pivot = T[high][0][0]
     i = low - 1
@@ -34,6 +36,8 @@ def dominance(P):
     return S
 
 
-P = [(2, 2), (1, 1), (2.5, 0.5), (0.5, 0.5), (3, 2), (0.5, 3), (0.5, 0.5)]
-S = dominance(P)
-print(S)
+runtests(dominance)
+
+# P = [(2, 2), (1, 1), (2.5, 0.5), (0.5, 0.5), (3, 2), (0.5, 3), (0.5, 0.5)]
+# S = dominance(P)
+# print(S)
