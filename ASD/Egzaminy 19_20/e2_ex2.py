@@ -39,8 +39,8 @@ def kruskal(V, E, beg):
             A.append(e)
 
     time = E[A[len(A) - 1]][2] - E[A[0]][2]
-    for e in range(len(E)):
-        if find(v[E[e][0]]) != find(v[E[e][1]]):
+    for i in range(1, n):
+        if find(v[0]) != find(v[i]):
             time = float("inf")
             break
 

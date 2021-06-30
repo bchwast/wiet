@@ -45,3 +45,9 @@ A = [randint(-1000, 1000) for _ in range(n * n)]
 B = [0] * (n * n)
 SumSort(A, B, n)
 print(B)
+sums = 0
+for i in range(n * n):
+    if i % n == 0:
+        print(sums)
+        sums = 0
+    sums += B[i]

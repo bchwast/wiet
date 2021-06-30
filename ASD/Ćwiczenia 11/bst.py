@@ -86,26 +86,43 @@ def pred(root, key=None):
     return prev
 
 
-# def delete(root, key):
-#     dead = find(root, key)
-#     if dead is None:
-#         return False
-#
-#     if dead.left is None and dead.right is None:
-#         if dead.parent is None:
-#             root = None
-#             return True
-#         if dead.parent.right == dead:
-#             dead.parent.right = None
-#         elif dead.parent.left == dead:
-#             dead.parent.left = None
-#         dead = None
-#         return True
+def remove(root, key):
+    victim = find(root, key)
+    if victim is None:
+        return False
+
+    if victim.left is None and victim.right is None:
+        parent = victim.parent
+        if parent.left == victim:
+            parent.left = None
+        else:
+            parent.right = None
+    elif victim.right is None:
+        parent = victim.parent
+        if parent.left == victim:
+            parent.left = victim.left
+        else:
+            parent.right = victim.left
+    elif victim.left is None:
+        parent = victim.parent
+        if parent.left == victim:
+            parent.left = victim.right
+        else:
+            parent.right = victim.right
+    else:
+        next = succ(root, key)
+        remove(root, next.key)
+        victim.key = next.key
+
+
 
 
 tree = BSTNode(20, 1)
 T = [3, 4, 23, 5, 76, 42, 6, 32, 69, 234, 45, 22]
 for i in range(len(T)):
     insert(tree, T[i], 1)
-print(succ(pred(max_node(tree))))
+print(min_node(tree))
+remove(tree, 20)
+print(min_node(tree))
+print(tree)
 

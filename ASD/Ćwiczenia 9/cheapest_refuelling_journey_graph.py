@@ -8,7 +8,7 @@ from queue import PriorityQueue
 
 # każdy wierzchołek rozdzielamy na 100 wierzchołków zawierających informację z jaką ilością paliwa do niego dotarliśmy
 # każdy z tych wierzchołków łączymy krawędziami z wierzchołkami do których możemy dotrzeć, wagą takiej krawędzi będzie
-# paliwa, które musimy zatankować w danym wierzchołku, z którego wychodzimy
+# koszt paliwa, które musimy zatankować w danym wierzchołku, z którego wychodzimy
 
 
 def dijkstra(G, s, t):

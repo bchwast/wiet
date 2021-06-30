@@ -1,29 +1,21 @@
 from e2_ex1_testy import runtests
 
-def zbycholud(A, F, i, e):
-    if F[i][e] != float("inf"):
-        return F[i][e]
-
-    res = float("inf")
-    for k in range(i):
-        if 0 <= e + i - k - A[i] < len(F[k]):
-            res = min(res, zbycholud(A, F, k, e + i - k - A[i]))
-    F[i][e] = res + 1
-    return F[i][e]
-
 
 def zbigniew(A):
     n = len(A)
-    F = [[float("inf")] * (n + 1) for _ in range(n)]
-    for e in range(A[0] + 1):
-        F[0][e] = 0
+    e_max = sum(A)
+    F = [[float("inf")] * (e_max + 1) for _ in range(n)]
+    F[0][A[0]] = 0
 
-    res = float("inf")
-    for e in range(n):
-        zbycholud(A, F, n - 1, e)
-        res = min(res, F[n - 1][e])
+    for i in range(n):
+        for e in range(e_max + 1):
+            if F[i][e] != float("inf"):
+                for k in range(1, e + 1):
+                    if i + k < n and e - k + A[i + k] <= e_max:
+                        F[i + k][A[i + k] + e - k] = min(F[i + k][A[i + k] + e - k], F[i][e] + 1)
 
+    res = min(F[n - 1])
     return res
-       
 
-runtests( zbigniew ) 
+
+runtests(zbigniew)

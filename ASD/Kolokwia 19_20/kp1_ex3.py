@@ -12,75 +12,61 @@ class BSTNode:
 def find(root, key):
     while root is not None:
         if root.key == key:
-            return root
+            if root.cnt > 1:
+                root.cnt -= 1
+                return False
+            if root.cnt == 1:
+                root.cnt -= 1
+                return True
         elif key < root.key:
             root = root.left
         else:
             root = root.right
 
 
-def switch(root, key):
-    if root.key == key:
-        root.cnt -= 1
-        return root
-    elif key < root.key:
-        root.left = switch(root.left, key)
-    else:
-        root.right = switch(root.right, key)
-    return root
-
-
-def check(root, key):
-    r = root
-    while True:
+def insert(root, key):
+    prev = None
+    side = None
+    while root is not None:
         if root.key == key:
-            if root.cnt > 0:
+            if root.cnt == 0:
                 root.cnt += 1
-                return r, True
+                return True
             root.cnt += 1
-            return r, False
-        elif key < root.key:
-            if root.left is None:
-                root.left = BSTNode(key)
-                return r, False
+            return False
+        prev = root
+        if key < root.key:
             root = root.left
+            side = 0
         else:
-            if root.right is None:
-                root.right = BSTNode(key)
-                return r, False
             root = root.right
-
+            side = 1
+    node = BSTNode(key)
+    node.parent = prev
+    if side == 0:
+        prev.left = node
+    else:
+        prev.right = node
+    return True
 
 
 def longest_incomplete( A, k ):
     n = len(A)
     t = BSTNode(-1)
 
-    m, curr, present = 0, 0, 0
+    m, curr, diff = 0, 0, 0
     for i in range(n):
-        print(i, A[i], curr)
-        t, c = check(t, A[i])
-        if not c:
-            present += 1
-            if present == k:
-                for j in range(i - curr, i):
-                    node = find(t, A[j])
-                    if node.cnt == 1:
-                        t = switch(t, A[j])
-                        break
-                    else:
-                        t = switch(t, A[j])
-                        curr -= 1
-                        present -= 1
-            else:
-                curr += 1
-                m = max(m, curr)
-        else:
+        if insert(t, A[i]):
+            diff += 1
+        if diff < k:
             curr += 1
             m = max(m, curr)
-
-
-
+        else:
+            while diff == k:
+                if find(t, A[i - curr]):
+                    diff -= 1
+                else:
+                    curr -= 1
 
     return m
 

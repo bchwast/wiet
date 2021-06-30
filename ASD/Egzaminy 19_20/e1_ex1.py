@@ -20,7 +20,7 @@ def dijkstra(G, s, t, n_):
     for i in range(n):
         u = min_d(d, enqueued, n)
         if u is None:
-            break
+            continue
         enqueued[u] = False
 
         for v in range(n):

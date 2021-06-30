@@ -12,30 +12,22 @@ def insertionsort(T):
         T[j + 1] = el
 
 
-def bucketsort(T):
-    maxEl, minEl = max(T), min(T)
-    bucketTab = [[] for _ in range(len(T))]
-    bucketRange = (maxEl - minEl) / len(T)
-    for i in range(len(T)):
-        bucketTab[min(int((T[i] - minEl) / bucketRange), len(T) - 1)].append(T[i])
+def fast_sort(tab, a):
+    maxEl, minEl = log(max(tab), a), log(min(tab), a)
+    bucketTab = [[] for _ in range(len(tab))]
+    bucketRange = (maxEl - minEl) / len(tab)
+    for i in range(len(tab)):
+        bucketTab[min(int((log(tab[i], a) - minEl) / bucketRange), len(tab) - 1)].append(tab[i])
 
-    for i in range(len(T)):
+    for i in range(len(tab)):
         insertionsort(bucketTab[i])
 
     ind = 0
-    for i in range(len(T)):
+    for i in range(len(tab)):
         for j in range(len(bucketTab[i])):
-            T[ind] = bucketTab[i][j]
+            tab[ind] = bucketTab[i][j]
             ind += 1
 
-                 
-    
-def fast_sort(tab, a):
-    n = len(tab)
-    T = [log(tab[i], a) for i in range(n)]
-    bucketsort(T)
-    for i in range(n):
-        tab[i] = a ** T[i]
     return tab
 
 
